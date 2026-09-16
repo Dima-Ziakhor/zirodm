@@ -2,60 +2,161 @@
 
 ## Project Overview
 
-LinkSentinel is a SaaS platform
-for marketing link and domain monitoring.
+LinkSentinel is a SaaS domain monitoring platform for affiliate
+and digital marketing. It is the first product of a larger
+marketing automation ecosystem.
+
+Core flow: users add domains → system monitors availability
+automatically → alerts are sent when a domain becomes unreachable.
 
 ## Repository
 
-This is a pnpm monorepo managed with Turborepo.
+pnpm monorepo managed with Turborepo.
 
-## Applications
+## Current Applications
 
-- apps/web — Next.js frontend.
-- apps/api — NestJS backend.
+- `apps/web` — Next.js 16 frontend (implemented).
+- `apps/api` — NestJS backend (**not yet created**, planned).
+
+## Shared Packages
+
+- `packages/database` (`@shared/database`) — TypeORM DataSource,
+  entities, and migrations for PostgreSQL.
+- `packages/contracts` (`@shared/contracts`) — Shared TypeScript
+  interfaces for API contracts (e.g. `ApiError`).
+- `packages/eslint-config` (`@repo/eslint-config`) — Shared ESLint
+  configurations.
+- `packages/typescript-config` (`@repo/typescript-config`) — Shared
+  tsconfig presets.
 
 ## Technology Stack
 
-- TypeScript
-- Next.js
-- React
-- NestJS
-- PostgreSQL
-- TypeORM
-- pnpm
-- Turborepo
+### Frontend (`apps/web`)
+
+- Next.js 16, React 19, TypeScript 6
+- Feature-Sliced Design (FSD)
+- shadcn/ui (style: `base-nova`, base color: `mauve`)
+- Tailwind CSS 4
+- i18next / next-i18next (supported languages: `en`, `uk`)
+- Vitest (testing)
+
+### Backend (`apps/api` — planned)
+
+- NestJS, TypeScript
+- PostgreSQL + TypeORM
+- Redis + BullMQ (background workers)
+- Vitest (testing)
+
+### Tooling
+
+- pnpm 11, Turborepo 2
+- ESLint 10 + Prettier 3
+- TypeScript 6 (strict mode, `noUncheckedIndexedAccess: true`)
 
 ## Architecture
 
-- Follow the existing project structure.
-- Use the established FSD approach in the frontend.
-- Follow NestJS module conventions in the backend.
-- Reuse existing abstractions where appropriate.
+### Frontend — Feature-Sliced Design
+
+FSD layers in `apps/web/src/` (from top to bottom; imports are
+allowed only downward):
+
+```
+_pages/   → Page-level components mapped to Next.js routes in app/
+widgets/  → Composite UI sections (header, footer, etc.)
+features/ → User interactions and business logic slices
+entities/ → Business domain objects and their UI representations
+shared/   → UI kit, utilities, types, API clients
+_app/     → Global styles and providers
+```
+
+**Rules:**
+- Import only from lower layers
+  (`_pages` → `widgets` → `features` → `entities` → `shared`).
+- Each slice exposes a public API through `index.ts`.
+  Always import through it, never from internal files directly.
+- Never import across slices on the same layer.
+- The `_pages` prefix avoids naming conflicts with Next.js `app/`.
+
+### TypeScript Path Aliases (`apps/web`)
+
+- `@/*` → `src/*`
+- `@ui/*` → `src/shared/components/ui/*`
+
+### Database
+
+- Always use TypeORM migrations. Never enable `synchronize: true`.
+- New entities go in `packages/database/src/entities/`.
+- New migrations go in `packages/database/src/migrations/`.
+- Use `timestamptz` for all timestamp columns.
+- Use soft delete (`@DeleteDateColumn`) where appropriate.
+- Column naming convention: `snake_case` in the database,
+  `camelCase` in TypeScript. Use the `name` option in `@Column`.
+- Export new entities and types through
+  `packages/database/src/index.ts`.
+
+### i18n
+
+- All user-facing strings must use i18n keys — never hardcode them.
+- Locale files: `apps/web/app/i18n/locales/{lng}/{namespace}.json`.
+- Namespaces: `common`, `landing`.
+  Register new namespaces in `apps/web/i18n.config.ts`.
+- Supported languages: `en` (default), `uk`.
+
+### API Contracts
+
+- Shared interfaces between frontend and backend go in
+  `packages/contracts/src/`.
+- Import with `@shared/contracts/api`.
+
+## Commands
+
+Run from the repository root:
+
+```bash
+pnpm dev          # Start all dev servers
+pnpm build        # Build all packages
+pnpm lint         # Run ESLint across the monorepo
+pnpm check-types  # Run TypeScript checks across the monorepo
+pnpm test         # Run tests (depends on lint + check-types)
+pnpm format       # Format with Prettier
+```
+
+Run for a specific package:
+
+```bash
+pnpm --filter @apps/web dev
+pnpm --filter @apps/api dev
+pnpm --filter @shared/database build
+```
 
 ## General Rules
 
-- Do not introduce dependencies without approval.
-- Do not change public API contracts unnecessarily.
-- Do not modify environment files.
-- Do not expose secrets.
-- Avoid unnecessary refactoring.
+- Do not introduce new dependencies without approval.
+- Do not change public API contracts without discussion.
+- Do not modify `.env*` files.
+- Do not expose secrets or credentials in code.
+- Avoid unnecessary refactoring of unrelated code.
+- Never enable `synchronize: true` in TypeORM.
+- Always use `import type` for type-only imports
+  (enforced by ESLint: `@typescript-eslint/consistent-type-imports`).
 
 ## Development Workflow
 
 Before implementation:
 
-1. Analyze the relevant code.
-2. Identify existing patterns.
-3. Create an implementation plan.
+1. Analyze the relevant code and identify existing patterns.
+2. Identify which FSD layer or NestJS module the change belongs to.
+3. Create an implementation plan and present it for review.
 
 After implementation:
 
-1. Run relevant type checks.
-2. Run ESLint.
-3. Run tests.
+1. `pnpm check-types`
+2. `pnpm lint`
+3. `pnpm test`
 4. Review the final diff.
 
 ## Git
 
 - Do not create commits unless explicitly requested.
 - Do not reset or discard unrelated changes.
+- Branch naming: use `feat/`, `fix/`, or `chore/` prefixes.

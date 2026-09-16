@@ -1,5 +1,5 @@
 {
-  "name": "link-sentinel",
+  "name": "zirodm",
   "private": true,
   "scripts": {
     "build": "turbo run build",
