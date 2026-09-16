@@ -1,0 +1,41 @@
+{
+  "$schema": "./node_modules/turbo/schema.json",
+  "ui": "tui",
+  "cacheMaxSize": "3GB",
+  "remoteCache": {
+    "enabled": false,
+    "signature": true
+  },
+  "globalEnv": ["NODE_ENV"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env",
+        ".env.local"
+      ],
+      "outputs": [".next/**", "!.next/cache/**", "!.next/dev/**", "dist/**"]
+    },
+    "@apps/web#build": {
+      "env": ["API_URL"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "check-types": {
+      "dependsOn": ["^check-types"]
+    },
+    "dev": {
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.development.local"
+      ],
+      "cache": false,
+      "persistent": true
+    },
+    "test": {
+      "dependsOn": ["lint", "check-types"]
+    }
+  }
+}

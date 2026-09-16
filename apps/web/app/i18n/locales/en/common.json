@@ -1,0 +1,10 @@
+{
+  "notFoundPage": {
+    "title": "Looks like this page went off the radar.",
+    "description": [
+      "The link might be broken, moved, or simply never existed.",
+      "Let's get you back on track."
+    ],
+    "backBtnText": "Back to home"
+  }
+}
