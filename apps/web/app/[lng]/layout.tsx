@@ -9,7 +9,7 @@ import i18nConfig from '../../i18n.config';
 
 export const metadata: Metadata = {
   icons: {
-    icon: '/icon_dark.png'
+    icon: '/icon.png'
   }
 };
 
@@ -33,7 +33,7 @@ export default async function RootLayout({ children, params }: Props) {
 
   return (
     <html className={cn('font-sans', inter.variable)}>
-      <body className="flex flex-col min-h-screen">
+      <body className="flex flex-col min-h-screen h-[200vh]">
         <I18nProvider language={lng} resources={resources}>
           {children}
         </I18nProvider>

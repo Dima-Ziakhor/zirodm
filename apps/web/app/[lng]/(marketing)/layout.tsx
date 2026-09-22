@@ -1,18 +1,18 @@
 import '@/_app/global.css';
-import { LandingFooter } from '@/widgets/landing-footer';
-import { LandingHeader } from '@/widgets/landing-header';
+import { MarketingHeader } from '@/widgets/marketing-header';
+import { MarketingFooter } from '@/widgets/marketing-footer';
 import type { ReactNode } from 'react';
 
 export default function LandingLayout({ children }: { children: ReactNode }) {
   return (
     <>
-      <LandingHeader isLoggedIn={false} />
+      <MarketingHeader isLoggedIn={false} />
 
       <main className="flex flex-1">
         {children}
       </main>
 
-      <LandingFooter />
+      <MarketingFooter />
     </>
   );
 }

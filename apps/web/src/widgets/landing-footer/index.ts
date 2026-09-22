@@ -1,1 +1,0 @@
-export { Footer as LandingFooter } from './ui/Footer';

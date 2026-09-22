@@ -1,0 +1,154 @@
+{
+  "logo": {
+    "alt": "Zirodm logo"
+  },
+  "nav": {
+    "about": "About us",
+    "pricing": "Pricing",
+    "login": "Login"
+  },
+  "links": {
+    "terms": "Terms and Conditions",
+    "privacy": "Privacy Policy"
+  },
+  "hero": {
+    "title": "Zirodm",
+    "subtitle": "Building better tools for digital marketing",
+    "description": "We create practical software to simplify marketing workflows, reduce repetitive tasks, and help marketers focus on what really matters — growth",
+    "form": {
+      "title": "Stay up to date with our news",
+      "email": {
+        "placeholder": "E-mail"
+      },
+      "submit": "Subscribe"
+    }
+  },
+  "about": {
+    "title": "Software built around your marketing needs",
+    "subtitle": "Zirodm is a digital product company focused on developing innovative software for digital marketers",
+    "description": [
+      "We combine marketing expertise with an engineering-driven approach to create tools that address real challenges, simplify complex workflows, and make everyday operations more efficient.",
+      "We are building Zirodm step by step, starting with LinkSentinel and working toward a connected ecosystem of marketing tools."
+    ]
+  },
+  "mission": {
+    "title": "Making marketing operations simpler",
+    "subtitle": "Making marketing operations simpler",
+    "description": [
+      "Digital marketing involves countless repetitive tasks and operational challenges.",
+      "From monitoring links and managing domains to handling campaign infrastructure, marketers often spend valuable time on processes that could be simpler."
+    ],
+    "goal": {
+      "title": "Our goal is to build tools that take this complexity off your hands.",
+      "description": "We want to help marketers:",
+      "bullets": [
+        "Save time by reducing repetitive tasks.",
+        "Stay in control of their marketing infrastructure.",
+        "Work more efficiently with purpose-built tools.",
+        "Focus on growth instead of operational overhead."
+      ]
+    },
+    "current": "Zirodm is currently in an active development stage. We are working on new solutions that will gradually become part of a connected ecosystem designed to support different aspects of digital marketing."
+  },
+  "products": {
+    "title": "Our products",
+    "items": [
+      {
+        "title": "LinkSentinel",
+        "subtitle": "Keep your marketing links in check",
+        "description": [
+          "LinkSentinel helps affiliate marketers monitor their links and domains, detect potential issues, and keep their traffic destinations under control.",
+          "Whether you're managing a few campaigns or a growing portfolio of domains, LinkSentinel helps you stay informed about the health of your marketing links."
+        ],
+        "features": [
+          "Affiliate link monitoring",
+          "Domain status tracking",
+          "Automated link checks",
+          "Problem detection",
+          "Monitoring of active domains"
+        ],
+        "cta": "Explore LinkSentinel"
+      }
+    ]
+  },
+  "pricing": {
+    "title": "Plans that grow with you",
+    "subtitle": "Start monitoring your links for free and unlock more capabilities as your needs grow",
+    "items": [
+      {
+        "title": "Free",
+        "subtitle": "For getting started",
+        "price": "$0 / month",
+        "description": [
+          "20 links for monitoring active domains",
+          "Basic link monitoring",
+          "Domain status checks",
+          "Basic monitoring dashboard",
+          "Community support"
+        ],
+        "cta": "Get started"
+      },
+      {
+        "title": "Pro",
+        "subtitle": "For marketers managing multiple campaigns",
+        "price": "$X / month",
+        "description": [
+          "Everything in Free",
+          "Increased link monitoring limits",
+          "More frequent monitoring",
+          "Advanced monitoring features",
+          "Monitoring history",
+          "Priority support",
+          "Early access to upcoming Zirodm products"
+        ],
+        "cta": "Start with Pro"
+      },
+      {
+        "title": "Enterprise",
+        "subtitle": "For teams with advanced requirements",
+        "price": "Custom pricing",
+        "description": [
+          "Everything in Pro",
+          "Custom monitoring limits",
+          "Flexible monitoring configurations",
+          "Team access",
+          "Dedicated support",
+          "Custom integrations",
+          "Early access to upcoming Zirodm products"
+        ],
+        "cta": "Contact us"
+      }
+    ]
+  },
+  "getMore": {
+    "title": "Get more as we grow",
+    "description": [
+      "LinkSentinel is actively evolving, and we're building more than just a standalone monitoring tool.",
+      "As we expand our ecosystem, early users will have the opportunity to benefit from what comes next."
+    ],
+    "items": [
+      {
+        "title": "Start with 20 free links",
+        "description": "New users get 20 free links to monitor active domains when they sign up for LinkSentinel"
+      },
+      {
+        "title": "Early access to what's next",
+        "description": "Users who subscribe to a paid plan will receive early access to upcoming Zirodm products and features as they become available."
+      },
+      {
+        "title": "Grow with us",
+        "description": "Be part of the early community and help shape the tools we're building for digital marketers"
+      }
+    ],
+    "cta": "Get started with LinkSentinel"
+  },
+  "final": {
+    "title": "Be part of what's next",
+    "subtitle": "We're building tools to make digital marketing simpler, more efficient, and easier to scale",
+    "description": "Start with LinkSentinel today and stay tuned for what's coming next",
+    "cta": {
+      "products": "Get started with LinkSentinel",
+      "updates": "Subscribe for updates"
+    }
+  }
+}

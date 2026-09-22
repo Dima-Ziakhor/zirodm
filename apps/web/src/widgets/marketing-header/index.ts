@@ -1,0 +1,1 @@
+export { Header as MarketingHeader } from './ui/Header';
