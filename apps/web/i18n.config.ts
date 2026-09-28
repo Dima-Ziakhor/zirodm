@@ -12,12 +12,11 @@ const resourceLoader: I18nConfig['resourceLoader'] =
         return JSON.parse(content);
       }
     : (lng, ns) => import(`./app/i18n/locales/${lng}/${ns}.json`);
-
 const i18nConfig: I18nConfig = {
   supportedLngs: ['en', 'uk'],
   fallbackLng: 'en',
   defaultNS: 'common',
-  ns: ['common', 'landing'],
+  ns: ['common', 'marketing'],
   hideDefaultLocale: true,
   resourceLoader
 };

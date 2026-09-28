@@ -9,8 +9,8 @@ export async function Logo() {
     <Link href={'/'}>
       <Image
         src="/icon.png"
-        width={75}
-        height={75}
+        width={50}
+        height={50}
         alt={t('logo.alt')}
       />
     </Link>

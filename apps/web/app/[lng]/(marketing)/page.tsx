@@ -1,1 +1,1 @@
-export { MainPage as default, metadata } from '@/_pages/main';
+export { MainPage as default, generateMetadata } from '@/_pages/main';

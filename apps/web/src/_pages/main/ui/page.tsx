@@ -1,17 +1,32 @@
-import { Button } from '@/shared/components/ui/button';
 import type { Metadata } from 'next';
+import { getT } from 'next-i18next/server';
+import { HeroSection } from '@/widgets/marketing-hero';
+import { AboutSection } from '@/widgets/marketing-about';
+import { MissionSection } from '@/widgets/marketing-mission';
+import { ProductsSection } from '@/widgets/marketing-products';
+import { PricingSection } from '@/widgets/marketing-pricing';
+import { GetMoreSection } from '@/widgets/marketing-get-more';
+import { FinalSection } from '@/widgets/marketing-final';
 
-export const metadata: Metadata = {
-  title: 'Link Sentinel'
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getT('marketing');
+
+  return {
+    title: t('metadata.title'),
+    description: t('metadata.description'),
+  };
+}
 
 export async function MainPage() {
   return (
-    <>
-      <h1 className="text-3xl font-bold">This is main page</h1>
-      <Button className="cursor-pointer">
-        {'Click'}
-      </Button>
-    </>
+    <div className="flex flex-col w-full">
+      <HeroSection />
+      <AboutSection />
+      <MissionSection />
+      <ProductsSection />
+      <PricingSection />
+      <GetMoreSection />
+      <FinalSection />
+    </div>
   );
 }

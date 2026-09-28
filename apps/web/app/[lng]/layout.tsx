@@ -6,6 +6,7 @@ import { initServerI18next, generateI18nStaticParams, getResources, getT } from 
 import { Inter } from 'next/font/google';
 import type { ReactNode } from 'react';
 import i18nConfig from '../../i18n.config';
+import { ThemeProvider } from '@/shared/components/providers/ThemeProvider';
 
 export const metadata: Metadata = {
   icons: {
@@ -32,11 +33,13 @@ export default async function RootLayout({ children, params }: Props) {
   const resources = getResources(i18n);
 
   return (
-    <html className={cn('font-sans', inter.variable)}>
-      <body className="flex flex-col min-h-screen h-[200vh]">
-        <I18nProvider language={lng} resources={resources}>
-          {children}
-        </I18nProvider>
+    <html className={cn('font-sans', inter.variable)} suppressHydrationWarning>
+      <body className="flex flex-col min-h-screen">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <I18nProvider language={lng} resources={resources}>
+            {children}
+          </I18nProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

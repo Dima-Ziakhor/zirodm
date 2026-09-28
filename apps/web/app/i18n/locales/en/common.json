@@ -6,5 +6,10 @@
       "Let's get you back on track."
     ],
     "backBtnText": "Back to home"
+  },
+  "validation": {
+    "email": {
+      "invalid": "Invalid e-mail"
+    }
   }
 }
