@@ -142,18 +142,65 @@ pnpm --filter @shared/database build
 
 ## Development Workflow
 
+### General
+
+Use the simplest workflow appropriate for the task.
+
 Before implementation:
 
 1. Analyze the relevant code and identify existing patterns.
 2. Identify which FSD layer or NestJS module the change belongs to.
-3. Create an implementation plan and present it for review.
+3. Determine the appropriate implementation and testing scope.
+4. Avoid unnecessary delegation, planning, or review for trivial changes.
 
-After implementation:
+### Small Changes
 
-1. `pnpm check-types`
-2. `pnpm lint`
-3. `pnpm test`
-4. Review the final diff.
+For isolated and low-risk changes:
+
+- Implement directly.
+- Add or update tests when behavior requires coverage.
+- Run the most relevant verification commands.
+- Review the final diff.
+
+Do not require a separate planning or review phase for trivial changes.
+
+### Medium and Large Changes
+
+For changes involving multiple files, business logic, APIs, database changes, architecture, background jobs, or significant regression risk:
+
+- Create an implementation plan before coding.
+- Define the required test coverage.
+- Implement incrementally.
+- Run relevant tests and type checks.
+- Review the final diff.
+- Perform an independent code review when appropriate.
+
+### TDD
+
+When TDD is explicitly requested or the change contains substantial business logic:
+
+1. Define expected behavior and edge cases.
+2. Write failing tests.
+3. Implement the minimum required behavior.
+4. Run tests and fix implementation issues.
+5. Add missing regression and edge-case coverage.
+6. Run the final verification suite.
+
+Tests must not be weakened or removed merely to make the implementation pass.
+
+### Testing
+
+Prefer targeted test execution during development and TDD.
+
+Do not run the complete `pnpm test` workflow after every small change.
+
+Use the narrowest relevant test command first.
+
+Run the full test workflow before completion when the scope warrants it.
+
+when the scope of the change warrants it.
+
+Always review the final diff before completion.
 
 ## Git
 

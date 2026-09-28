@@ -16,7 +16,7 @@ export function ThemeSwitcher() {
 
   return (
     <Toggle
-      className="cursor-pointer"
+      className="cursor-pointer aria-pressed:not-hover:bg-transparent"
       aria-label="Language switcher"
       onClick={toggleTheme}
     >
